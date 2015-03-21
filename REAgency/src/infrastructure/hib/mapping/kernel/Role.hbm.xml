@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 31, 2015 1:37:08 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="core.domain.kernel.Role" table="ROLES">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="increment" />
+        </id>
+        <property name="version" type="int">
+            <column name="VERSION" />
+        </property>
+        <property name="isArchived" type="boolean" >
+            <column name="ISARCHIVED" />
+        </property>
+        <property name="dateOfArchive" type="java.util.Date">
+            <column name="DATEOFARCHIVE" />
+        </property>
+        <property name="description" column="DESCRIPTION" type="string" />
+        <property name="roleType">
+            <column name="ROLETYPE" />
+            <type name="org.hibernate.type.EnumType">
+                <param name="useNamed">true</param>
+                <param name="enumClass">core.domain.kernel.RoleType</param>
+            </type>
+        </property>
+        <list name="pages"  table="ROLE_PAGE">
+            <key column="ROLE_ID" />
+            <list-index column="POSITION" />
+            <element type="java.lang.String" />
+        </list>
+    </class>
+</hibernate-mapping>
