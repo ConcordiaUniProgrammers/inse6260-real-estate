@@ -1,0 +1,25 @@
+package core.contract.infracontract;
+
+import java.util.List;
+import java.util.Map;
+
+import core.domain.kernel.IEntity;
+
+public interface IRepository<T extends IEntity> {
+	
+	public void save(T entity);
+	public void delete(T entity);
+	public void update(T entity);
+	public T findById(int id);
+	public List<T> findAll();
+	public List<T> findAllByPage(int firstResult, int maxResult);
+	public int countAll();
+	public List<T> findByExample(T example);
+	public List<T> findByExampleByPage(T example, int firstResult, int maxResult);
+	public int countByExample(final T example);
+	public List<T> findByNamedQuery(String queryName, Object... params);
+	public List<T> findByNamedQueryByPage(String queryName, int firstResult, int maxResult, Object... params);
+	public List<T> findByNamedQueryAndNamedParams(String queryName, Map<String, ? extends Object> params);
+	public List<T> findByNamedQueryAndNamedParamsByPage(String queryName, int firstResult, int maxResult, Map<String, ? extends Object> params);
+	public void setObject(Object obj);
+}

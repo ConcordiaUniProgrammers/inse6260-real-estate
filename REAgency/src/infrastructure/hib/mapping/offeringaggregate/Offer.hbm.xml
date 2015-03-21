@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 31, 2015 1:37:08 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="core.domain.realestate.offeringaggregate.Offer"
+		table="OFFERS">
+		<id name="id" type="int">
+			<column name="ID" />
+			<generator class="increment" />
+		</id>
+		<property name="version" type="int">
+			<column name="VERSION" />
+		</property>
+		<property name="isArchived" type="boolean">
+			<column name="ISARCHIVED" />
+		</property>
+		<property name="dateOfArchive" type="java.util.Date">
+			<column name="DATEOFARCHIVE" />
+		</property>
+		<property name="description" column="DESCRIPTION" type="string" />
+		<many-to-one name="customer" class="core.domain.kernel.User"
+			not-null="true">
+			<column name="CUSTOMER" />
+		</many-to-one>
+		<many-to-one name="offerOwner"
+			class="core.domain.realestate.offeringaggregate.SellingOffer"
+			not-null="true">
+			<column name="OFFEROWNER" />
+		</many-to-one>
+		<property name="price" type="int">
+			<column name="PRICE" />
+		</property>
+		<property name="offerStatus">
+			<column name="OFFERSTATUS" />
+			<type name="org.hibernate.type.EnumType">
+				<param name="useNamed">true</param>
+				<param name="enumClass">core.domain.realestate.offeringaggregate.OfferStatus</param>
+			</type>
+		</property>
+	</class>
+</hibernate-mapping>

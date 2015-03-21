@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 31, 2015 1:37:08 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="core.domain.kernel.User" table="USERS">
+		<id name="id" type="int">
+			<column name="ID" />
+			<generator class="increment" />
+		</id>
+		<property name="version" type="int">
+			<column name="VERSION" />
+		</property>
+		<property name="isArchived" type="boolean" >
+			<column name="ISARCHIVED" />
+		</property>
+		<property name="dateOfArchive" type="java.util.Date">
+			<column name="DATEOFARCHIVE" />
+		</property>
+		<property name="name" type="java.lang.String">
+			<column name="NAME" />
+		</property>
+		<property name="username" type="java.lang.String">
+			<column name="USERNAME" />
+		</property>
+		<property name="password" type="java.lang.String">
+			<column name="PASSWORD" />
+		</property>
+		<many-to-one name="role" class="core.domain.kernel.Role"
+			not-null="true">
+			<column name="ROLE" />
+		</many-to-one>
+		<list name="sellingOffers" inverse="true" table="SELLINGOFFERS"
+			cascade="save-update" lazy="true">
+			<key column="USER_ID" />
+			<list-index column="POSITION" />
+			<one-to-many class="core.domain.realestate.offeringaggregate.SellingOffer" />
+		</list>
+		<list name="offers" inverse="true" table="OFFERS" cascade="save-update"
+			lazy="true">
+			<key column="USER_ID" />
+			<list-index column="POSITION" />
+			<one-to-many class="core.domain.realestate.offeringaggregate.Offer" />
+		</list>
+		<list name="bookedTimes" inverse="true" table="BOOKEDTIMES"
+			cascade="save-update" lazy="true">
+			<key column="USER_ID" />
+			<list-index column="POSITION" />
+			<one-to-many class="core.domain.realestate.offeringaggregate.BookedTime" />
+		</list>
+		<property name="email" type="java.lang.String">
+			<column name="EMAIL" />
+		</property>
+		<property name="phone" type="java.lang.String">
+			<column name="PHONE" />
+		</property>
+
+		<component name="address">
+			<property name="postalCode" type="java.lang.String">
+				<column name="POSTALCODE" />
+			</property>
+			<property name="number" type="java.lang.String">
+				<column name="NUMBER" />
+			</property>
+		</component>
+		<list name="favorites" table="USER_SELLINGOFFER" cascade="save-update">
+			<key column="USER_ID" />
+			<list-index column="POSITION" />
+			<many-to-many class="core.domain.realestate.offeringaggregate.SellingOffer" column="SELLINGOFFER_ID" />
+		</list>
+
+	</class>
+</hibernate-mapping>

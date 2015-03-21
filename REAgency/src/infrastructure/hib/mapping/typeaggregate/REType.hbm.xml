@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 30, 2015 9:16:50 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="core.domain.realestate.typeaggregate.REType" table="RETYPES">
+		<id name="id" type="int">
+			<column name="ID" />
+			<generator class="increment" />
+		</id>
+		<property name="version" type="int">
+			<column name="VERSION" />
+		</property>
+		<property name="name" type="java.lang.String">
+			<column name="NAME" />
+		</property>
+		<property name="accessKey" type="java.lang.String">
+			<column name="ACCESSKEY" />
+		</property>
+		<property name="rank" type="int">
+			<column name="RANK" />
+		</property>
+		<property name="isArchived" type="boolean" >
+			<column name="ISARCHIVED" />
+		</property>
+		<property name="dateOfArchive" type="java.util.Date">
+			<column name="DATEOFARCHIVE" />
+		</property>
+		<joined-subclass
+			name="core.domain.realestate.estateaggregate.ApplianceType" table="ApplianceTypes">
+			<key column="_id" />
+		</joined-subclass>
+		<joined-subclass
+			name="core.domain.realestate.estateaggregate.EstateFeatureType"
+			table="EstateFeatureTypes">
+			<key column="_id" />
+		</joined-subclass>
+		<joined-subclass name="core.domain.realestate.estateaggregate.EstateType"
+			table="EstateTypes">
+			<key column="_id" />
+		</joined-subclass>
+		<joined-subclass name="core.domain.realestate.estateaggregate.FacilityType"
+			table="FacilityTypes">
+			<key column="_id" />
+		</joined-subclass>
+		<joined-subclass name="core.domain.realestate.estateaggregate.ImageType"
+			table="ImageTypes">
+			<key column="_id" />
+		</joined-subclass>
+		<joined-subclass name="core.domain.realestate.estateaggregate.PieceType"
+			table="PieceTypes">
+			<key column="_id" />
+		</joined-subclass>
+		<joined-subclass name="core.domain.realestate.offeringaggregate.SellingOfferType"
+			table="SellingOfferTypes">
+			<key column="_id" />
+		</joined-subclass>
+
+	</class>
+</hibernate-mapping>

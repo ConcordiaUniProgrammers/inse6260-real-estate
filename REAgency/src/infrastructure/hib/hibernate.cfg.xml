@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.password">123456</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/reagency</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.default_schema">reagency</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.hbm2ddl.auto">create</property>
+		<property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+		<property name="hibernate.cache.use_second_level_cache">true</property>
+		<property name="hibernate.jdbc.batch_size">10</property>
+		
+		<!-- mapping section -->
+		<mapping class="core.domain.realestate.agantaggregate.ExpertAgency"
+			resource="infrastructure/hib/mapping/agantaggregate/ExpertAgency.hbm.xml" />
+		<mapping class="core.domain.realestate.areaaggregate.City"
+			resource="infrastructure/hib/mapping/areaaggregate/City.hbm.xml" />
+		<mapping class="core.domain.realestate.areaaggregate.Country"
+			resource="infrastructure/hib/mapping/areaaggregate/Country.hbm.xml" />
+		<mapping class="core.domain.realestate.areaaggregate.District"
+			resource="infrastructure/hib/mapping/areaaggregate/District.hbm.xml" />
+		<mapping class="core.domain.realestate.areaaggregate.State"
+			resource="infrastructure/hib/mapping/areaaggregate/State.hbm.xml" />
+		<mapping class="core.domain.realestate.estateaggregate.Appliance"
+			resource="infrastructure/hib/mapping/estateaggregate/Appliance.hbm.xml" />
+		<mapping class="core.domain.realestate.estateaggregate.Estate"
+			resource="infrastructure/hib/mapping/estateaggregate/Estate.hbm.xml" />
+		<mapping class="core.domain.realestate.estateaggregate.EstateFeature"
+			resource="infrastructure/hib/mapping/estateaggregate/EstateFeature.hbm.xml" />
+		<mapping class="core.domain.realestate.estateaggregate.Image"
+			resource="infrastructure/hib/mapping/estateaggregate/Image.hbm.xml" />
+		<mapping class="core.domain.realestate.estateaggregate.NearbyFacility"
+			resource="infrastructure/hib/mapping/estateaggregate/NearbyFacility.hbm.xml" />
+		<mapping class="core.domain.realestate.estateaggregate.Piece"
+			resource="infrastructure/hib/mapping/estateaggregate/Piece.hbm.xml" />
+		<mapping class="core.domain.realestate.estateaggregate.Unit"
+			resource="infrastructure/hib/mapping/estateaggregate/Unit.hbm.xml" />
+		<mapping class="core.domain.kernel.Role"
+			resource="infrastructure/hib/mapping/kernel/Role.hbm.xml" />
+		<mapping class="core.domain.kernel.User"
+			resource="infrastructure/hib/mapping/kernel/User.hbm.xml" />
+		<mapping class="core.domain.realestate.offeringaggregate.AvailableTime"
+			resource="infrastructure/hib/mapping/offeringaggregate/AvailableTime.hbm.xml" />
+		<mapping class="core.domain.realestate.offeringaggregate.BookedTime"
+			resource="infrastructure/hib/mapping/offeringaggregate/BookedTime.hbm.xml" />
+		<mapping class="core.domain.realestate.offeringaggregate.Offer"
+			resource="infrastructure/hib/mapping/offeringaggregate/Offer.hbm.xml" />
+		<mapping class="core.domain.realestate.offeringaggregate.Representer"
+			resource="infrastructure/hib/mapping/offeringaggregate/Representer.hbm.xml" />
+		<mapping class="core.domain.realestate.offeringaggregate.SellingOffer"
+			resource="infrastructure/hib/mapping/offeringaggregate/SellingOffer.hbm.xml" />
+		<mapping class="core.domain.realestate.typeaggregate.REType"
+			resource="infrastructure/hib/mapping/typeaggregate/REType.hbm.xml" />
+			<!-- end of mapping section -->
+	</session-factory>
+</hibernate-configuration>

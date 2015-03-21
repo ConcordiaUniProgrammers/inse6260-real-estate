@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 31, 2015 1:37:08 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+ <class name="core.domain.realestate.estateaggregate.Unit" table="UNITS">
+  <id name="id" type="int">
+   <column name="ID"/>
+   <generator class="increment"/>
+  </id>
+  <property name="version" type="int">
+   <column name="VERSION"/>
+  </property>
+  <property name="isArchived" type="boolean">
+   <column name="ISARCHIVED"/>
+  </property>
+  <property name="floorNumber" type="int" column="FLOORNUMBER" />
+  <property name="unitNumber" type="int" column="UNITNUMBER"/>
+  <property name="dateOfArchive" type="java.util.Date">
+   <column name="DATEOFARCHIVE"/>
+  </property>
+  <property name="internalRenewDate" type="java.util.Date">
+   <column name="INTERNALRENEWDATE"/>
+  </property>
+  <property name="description" column="DESCRIPTION" type="string" />
+  <list cascade="save-update" inverse="true" lazy="true" name="images" table="IMAGES">
+   <key column="UNIT_ID"/>
+   <list-index base="0" column="POSITION"/>
+   <one-to-many class="core.domain.realestate.estateaggregate.Image"/>
+  </list>
+  <property name="videoAddress" type="java.lang.String">
+   <column name="VIDEOADDRESS"/>
+  </property>
+  <list cascade="save-update" inverse="true" lazy="true" name="pieces" table="PIECES">
+   <key column="UNIT_ID"/>
+   <list-index base="0" column="POSITION"/>
+   <one-to-many class="core.domain.realestate.estateaggregate.Piece"/>
+  </list>
+  <many-to-one class="core.domain.realestate.estateaggregate.Estate"
+   name="estate" not-null="true">
+   <column name="ESTATE"/>
+  </many-to-one>
+  <list cascade="save-update" inverse="true" lazy="true"
+   name="appliances" table="APPLIANCES">
+   <key column="UNIT_ID"/>
+   <list-index base="0" column="POSITION"/>
+   <one-to-many class="core.domain.realestate.estateaggregate.Appliance"/>
+  </list>
+ </class>
+</hibernate-mapping>

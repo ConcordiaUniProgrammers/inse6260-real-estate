@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 31, 2015 1:37:08 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="core.domain.realestate.offeringaggregate.Representer" table="REPRESENTERS">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="increment" />
+        </id>
+        <property name="version" type="int">
+            <column name="VERSION" />
+        </property>
+        <property name="isArchived" type="boolean" >
+            <column name="ISARCHIVED" />
+        </property>
+        <property name="dateOfArchive" type="java.util.Date">
+            <column name="DATEOFARCHIVE" />
+        </property>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        <property name="phone" type="java.lang.String">
+            <column name="PHONE" />
+        </property>
+         <property name="email" type="java.lang.String">
+            <column name="EMAIL" />
+        </property>
+        <many-to-one name="owner" class="core.domain.realestate.offeringaggregate.SellingOffer" not-null="true">
+            <column name="OWNER" />
+        </many-to-one>
+        <list name="availableTimes" inverse="true" table="AVAILABLETIMES" cascade="save-update" lazy="true">
+            <key column="REPRESENTER_ID" />
+            <list-index column="POSITION" />
+            <one-to-many class="core.domain.realestate.offeringaggregate.AvailableTime" />
+        </list>
+    </class>
+</hibernate-mapping>
