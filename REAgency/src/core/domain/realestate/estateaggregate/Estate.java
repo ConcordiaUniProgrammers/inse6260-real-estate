@@ -9,6 +9,7 @@ import core.domain.kernel.IEntity;
 import core.domain.realestate.agantaggregate.ExpertAgency;
 import core.domain.realestate.areaaggregate.District;
 import core.domain.realestate.offeringaggregate.SellingOffer;
+import core.domain.realestate.typeaggregate.EstateType;
 
 public class Estate implements IEntity, IArchivable {
 

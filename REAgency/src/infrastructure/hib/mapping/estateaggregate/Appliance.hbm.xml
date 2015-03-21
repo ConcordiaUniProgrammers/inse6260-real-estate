@@ -1,31 +1,35 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated Jan 31, 2015 1:37:08 AM by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="core.domain.realestate.estateaggregate.Appliance" table="APPLIANCES">
-        <id name="id" type="int">
-            <column name="ID" />
-            <generator class="increment" />
-        </id>
-        <property name="version" type="int">
-            <column name="VERSION" />
-        </property>
-        <property name="isArchived" type="boolean" >
-            <column name="ISARCHIVED" />
-        </property>
-        <property name="dateOfArchive" type="java.util.Date">
-            <column name="DATEOFARCHIVE" />
-        </property>
-        <property name="description" column="DESCRIPTION" type="string" />
-        <property name="quantity" type="int">
-            <column name="QUANTITY" />
-        </property>
-        <many-to-one name="type" class="core.domain.realestate.estateaggregate.ApplianceType" not-null="true">
-            <column name="TYPE" />
-        </many-to-one>
-        <many-to-one name="owner" class="core.domain.realestate.estateaggregate.Unit" not-null="true">
-            <column name="OWNER" />
-        </many-to-one>
-    </class>
+ <class name="core.domain.realestate.estateaggregate.Appliance" table="APPLIANCES">
+  <id name="id" type="int">
+   <column name="ID"/>
+   <generator class="increment"/>
+  </id>
+  <property generated="never" lazy="false" name="version" type="int">
+   <column name="VERSION"/>
+  </property>
+  <property generated="never" lazy="false" name="isArchived" type="boolean">
+   <column name="ISARCHIVED"/>
+  </property>
+  <property generated="never" lazy="false" name="dateOfArchive" type="java.util.Date">
+   <column name="DATEOFARCHIVE"/>
+  </property>
+  <property column="DESCRIPTION" generated="never" lazy="false"
+   name="description" type="string"/>
+  <property generated="never" lazy="false" name="quantity" type="int">
+   <column name="QUANTITY"/>
+  </property>
+  <many-to-one
+   class="core.domain.realestate.typeaggregate.ApplianceType"
+   name="type" not-null="true">
+   <column name="TYPE"/>
+  </many-to-one>
+  <many-to-one class="core.domain.realestate.estateaggregate.Unit"
+   name="owner" not-null="true">
+   <column name="OWNER"/>
+  </many-to-one>
+ </class>
 </hibernate-mapping>

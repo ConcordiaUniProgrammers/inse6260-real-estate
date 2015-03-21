@@ -1,80 +1,77 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated Jan 31, 2015 1:37:08 AM by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-	<class name="core.domain.realestate.estateaggregate.Estate"
-		table="ESTATES">
-		<id name="id" type="int">
-			<column name="ID" />
-			<generator class="foreign">
-				<param name="property">owner</param>
-			</generator>
-		</id>
-		<property name="version" type="int">
-			<column name="VERSION" />
-		</property>
-		<property name="isArchived" type="boolean">
-			<column name="ISARCHIVED" />
-		</property>
-		<property name="dateOfArchive" type="java.util.Date">
-			<column name="DATEOFARCHIVE" />
-		</property>
-		<property name="description" column="DESCRIPTION" type="string" />
-		<property name="age" column="AGE" type="int" />
-		<property name="renewDate" type="java.util.Date">
-			<column name="RENEWDATE" />
-		</property>
-		<list name="features" inverse="true" table="ESTATEFEATURES"
-			cascade="save-update" lazy="true">
-			<key column="ESTATE_ID" />
-			<list-index column="POSITION" />
-			<one-to-many class="core.domain.realestate.estateaggregate.EstateFeature" />
-		</list>
-		<list name="nearbyFacilities" inverse="true" table="NEARBYFACILITIES"
-			cascade="save-update" lazy="true">
-			<key column="ESTATE_ID" />
-			<list-index column="POSITION" />
-			<one-to-many class="core.domain.realestate.estateaggregate.NearbyFacility" />
-		</list>
-		<many-to-one name="type"
-			class="core.domain.realestate.estateaggregate.EstateType" not-null="true">
-			<column name="TYPE" />
-		</many-to-one>
-
-		<list name="units" inverse="true" table="UNITS" cascade="save-update"
-			lazy="true">
-			<key column="ESTATE_ID" />
-			<list-index column="POSITION" />
-			<one-to-many class="core.domain.realestate.estateaggregate.Unit" />
-		</list>
-		<list cascade="save-update" inverse="true" lazy="true" name="images"
-			table="IMAGES">
-			<key column="ESTATE_ID" />
-			<list-index base="0" column="POSITION" />
-			<one-to-many class="core.domain.realestate.estateaggregate.Image" />
-		</list>
-		<property name="videoAddress" type="java.lang.String">
-			<column name="VIDEOADDRESS" />
-		</property>
-		<many-to-one name="approvedBy"
-			class="core.domain.realestate.agantaggregate.ExpertAgency" not-null="true">
-			<column name="APPROVEDBY" />
-		</many-to-one>
-		<many-to-one name="area"
-			class="core.domain.realestate.areaaggregate.District" not-null="true">
-			<column name="AREA" />
-		</many-to-one>
-		<one-to-one name="owner"
-			class="core.domain.realestate.offeringaggregate.SellingOffer"
-			constrained="true"></one-to-one>
-		<component name="address">
-			<property name="postalCode" type="java.lang.String">
-				<column name="POSTALCODE" />
-			</property>
-			<property name="number" type="java.lang.String">
-				<column name="NUMBER" />
-			</property>
-		</component>
-	</class>
+ <class name="core.domain.realestate.estateaggregate.Estate" table="ESTATES">
+  <id name="id" type="int">
+   <column name="ID"/>
+   <generator class="foreign">
+    <param name="property">owner</param>
+   </generator>
+  </id>
+  <property generated="never" lazy="false" name="version" type="int">
+   <column name="VERSION"/>
+  </property>
+  <property generated="never" lazy="false" name="isArchived" type="boolean">
+   <column name="ISARCHIVED"/>
+  </property>
+  <property generated="never" lazy="false" name="dateOfArchive" type="java.util.Date">
+   <column name="DATEOFARCHIVE"/>
+  </property>
+  <property column="DESCRIPTION" generated="never" lazy="false"
+   name="description" type="string"/>
+  <property column="AGE" generated="never" lazy="false" name="age" type="int"/>
+  <property generated="never" lazy="false" name="renewDate" type="java.util.Date">
+   <column name="RENEWDATE"/>
+  </property>
+  <list cascade="save-update" inverse="true" lazy="true" name="features" table="ESTATEFEATURES">
+   <key column="ESTATE_ID"/>
+   <list-index base="0" column="POSITION"/>
+   <one-to-many class="core.domain.realestate.estateaggregate.EstateFeature"/>
+  </list>
+  <list cascade="save-update" inverse="true" lazy="true"
+   name="nearbyFacilities" table="NEARBYFACILITIES">
+   <key column="ESTATE_ID"/>
+   <list-index base="0" column="POSITION"/>
+   <one-to-many class="core.domain.realestate.estateaggregate.NearbyFacility"/>
+  </list>
+  <many-to-one class="core.domain.realestate.typeaggregate.EstateType"
+   name="type" not-null="true">
+   <column name="TYPE"/>
+  </many-to-one>
+  <list cascade="save-update" inverse="true" lazy="true" name="units" table="UNITS">
+   <key column="ESTATE_ID"/>
+   <list-index base="0" column="POSITION"/>
+   <one-to-many class="core.domain.realestate.estateaggregate.Unit"/>
+  </list>
+  <list cascade="save-update" inverse="true" lazy="true" name="images" table="IMAGES">
+   <key column="ESTATE_ID"/>
+   <list-index base="0" column="POSITION"/>
+   <one-to-many class="core.domain.realestate.estateaggregate.Image"/>
+  </list>
+  <property generated="never" lazy="false" name="videoAddress" type="java.lang.String">
+   <column name="VIDEOADDRESS"/>
+  </property>
+  <many-to-one
+   class="core.domain.realestate.agantaggregate.ExpertAgency"
+   name="approvedBy" not-null="true">
+   <column name="APPROVEDBY"/>
+  </many-to-one>
+  <many-to-one class="core.domain.realestate.areaaggregate.District"
+   name="area" not-null="true">
+   <column name="AREA"/>
+  </many-to-one>
+  <one-to-one
+   class="core.domain.realestate.offeringaggregate.SellingOffer"
+   constrained="true" name="owner"/>
+  <component name="address">
+   <property generated="never" lazy="false" name="postalCode" type="java.lang.String">
+    <column name="POSTALCODE"/>
+   </property>
+   <property generated="never" lazy="false" name="number" type="java.lang.String">
+    <column name="NUMBER"/>
+   </property>
+  </component>
+ </class>
 </hibernate-mapping>

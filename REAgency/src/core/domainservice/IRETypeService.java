@@ -2,6 +2,6 @@ package core.domainservice;
 
 public interface IRETypeService {
 
-	public void AddNewTypeToOneApmaType(String newTypeName, String type);
+	public void AddNewTypeToOneREType(String newTypeName, String type);
 
 }

@@ -23,7 +23,7 @@
         <property name="unit" type="java.lang.String">
             <column name="UNIT" />
         </property>
-        <many-to-one name="type" class="core.domain.realestate.estateaggregate.FacilityType" not-null="true">
+        <many-to-one name="type" class="core.domain.realestate.typeaggregate.FacilityType" not-null="true">
             <column name="TYPE" />
         </many-to-one>
         <many-to-one name="owner" class="core.domain.realestate.estateaggregate.Estate" not-null="true">

@@ -21,7 +21,7 @@
         <property name="quantity" type="int">
             <column name="QUANTITY" />
         </property>
-        <many-to-one name="featureType" class="core.domain.realestate.estateaggregate.EstateFeatureType" not-null="true">
+        <many-to-one name="featureType" class="core.domain.realestate.typeaggregate.EstateFeatureType" not-null="true">
             <column name="FEATURETYPE" />
         </many-to-one>
         <many-to-one name="owner" class="core.domain.realestate.estateaggregate.Estate" not-null="true">

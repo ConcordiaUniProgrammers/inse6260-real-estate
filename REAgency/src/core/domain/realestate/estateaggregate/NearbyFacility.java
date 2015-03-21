@@ -4,6 +4,7 @@ import java.util.Date;
 
 import core.domain.kernel.IArchivable;
 import core.domain.kernel.IEntity;
+import core.domain.realestate.typeaggregate.FacilityType;
 
 public class NearbyFacility implements IEntity, IArchivable {
 

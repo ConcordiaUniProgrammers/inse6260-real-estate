@@ -16,13 +16,13 @@ import core.domainservice.IRETypeService;
 public class RETypeService implements IRETypeService {
 
 	@Override
-	public void AddNewTypeToOneApmaType(String newTypeName, String type) {
+	public void AddNewTypeToOneREType(String newTypeName, String type) {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(
 				DIConfiguration.class);
 		IUnitOfWork uow = context.getBean(UnitOfWork.class);
 		try {
 			Class<?> myClass = Class
-					.forName("core.domain.realestate.typeaggregate.REType");
+					.forName("core.domain.realestate.typeaggregate." + type);
 			Constructor<?> cons = myClass.getConstructors()[0];
 			REType myType = (REType) cons.newInstance();
 

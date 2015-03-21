@@ -27,31 +27,31 @@
 			<column name="DATEOFARCHIVE" />
 		</property>
 		<joined-subclass
-			name="core.domain.realestate.estateaggregate.ApplianceType" table="ApplianceTypes">
+			name="core.domain.realestate.typeaggregate.ApplianceType" table="ApplianceTypes">
 			<key column="_id" />
 		</joined-subclass>
 		<joined-subclass
-			name="core.domain.realestate.estateaggregate.EstateFeatureType"
+			name="core.domain.realestate.typeaggregate.EstateFeatureType"
 			table="EstateFeatureTypes">
 			<key column="_id" />
 		</joined-subclass>
-		<joined-subclass name="core.domain.realestate.estateaggregate.EstateType"
+		<joined-subclass name="core.domain.realestate.typeaggregate.EstateType"
 			table="EstateTypes">
 			<key column="_id" />
 		</joined-subclass>
-		<joined-subclass name="core.domain.realestate.estateaggregate.FacilityType"
+		<joined-subclass name="core.domain.realestate.typeaggregate.FacilityType"
 			table="FacilityTypes">
 			<key column="_id" />
 		</joined-subclass>
-		<joined-subclass name="core.domain.realestate.estateaggregate.ImageType"
+		<joined-subclass name="core.domain.realestate.typeaggregate.ImageType"
 			table="ImageTypes">
 			<key column="_id" />
 		</joined-subclass>
-		<joined-subclass name="core.domain.realestate.estateaggregate.PieceType"
+		<joined-subclass name="core.domain.realestate.typeaggregate.PieceType"
 			table="PieceTypes">
 			<key column="_id" />
 		</joined-subclass>
-		<joined-subclass name="core.domain.realestate.offeringaggregate.SellingOfferType"
+		<joined-subclass name="core.domain.realestate.typeaggregate.SellingOfferType"
 			table="SellingOfferTypes">
 			<key column="_id" />
 		</joined-subclass>

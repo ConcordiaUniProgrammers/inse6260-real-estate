@@ -1,56 +1,66 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated Jan 31, 2015 1:37:08 AM by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="core.domain.realestate.offeringaggregate.SellingOffer" table="SELLINGOFFERS">
-        <id name="id" type="int">
-            <column name="ID" />
-            <generator class="increment" />
-        </id>
-        <property name="version" type="int">
-            <column name="VERSION" />
-        </property>
-        <property name="isArchived" type="boolean" >
-            <column name="ISARCHIVED" />
-        </property>
-        <property name="dateOfArchive" type="java.util.Date">
-            <column name="DATEOFARCHIVE" />
-        </property>
-        <property name="description" column="DESCRIPTION" type="string" />
-         <property name="basePrice" column="BASEPRICE" type="int" />
-        <one-to-one name="estate" class="core.domain.realestate.estateaggregate.Estate" cascade="save-update"></one-to-one>
-        <many-to-one name="owner" class="core.domain.kernel.User" not-null="true">
-            <column name="OWNER" />
-        </many-to-one>
-        <list name="representers" inverse="true" table="REPRESENTERS" cascade="save-update"  lazy="true" >
-            <key column="SELLINGOFFER_ID" />
-            <list-index column="POSITION" />
-            <one-to-many class="core.domain.realestate.offeringaggregate.Representer" />
-        </list>
-        <list name="offers" inverse="true" table="OFFERS" cascade="save-update" lazy="true">
-            <key column="SELLINGOFFER_ID" />
-            <list-index column="POSITION" />
-            <one-to-many class="core.domain.realestate.offeringaggregate.Offer" />
-        </list>
-        <many-to-one name="approvalRequest" class="core.domain.realestate.agantaggregate.ExpertAgency" not-null="true">
-            <column name="APPROVALREQUEST" />
-        </many-to-one>
-        <property name="approvalStatus">
-            <column name="APPROVALSTATUS" />
-            <type name="org.hibernate.type.EnumType">
-                <param name="useNamed">true</param>
-                <param name="enumClass">core.domain.realestate.offeringaggregate.ApprovalStatus</param>
-            </type>
-        </property>
-        <property name="dateOfApprove" type="java.util.Date">
-            <column name="DATEOFAPPROVE" />
-        </property>
-        <many-to-one name="offeredBy" class="core.domain.realestate.agantaggregate.ExpertAgency" not-null="true">
-            <column name="OFFEREDBY" />
-        </many-to-one>
-        <many-to-one name="type" class="core.domain.realestate.offeringaggregate.SellingOfferType" not-null="true">
-            <column name="TYPE" />
-        </many-to-one>
-    </class>
+ <class name="core.domain.realestate.offeringaggregate.SellingOffer" table="SELLINGOFFERS">
+  <id name="id" type="int">
+   <column name="ID"/>
+   <generator class="increment"/>
+  </id>
+  <property generated="never" lazy="false" name="version" type="int">
+   <column name="VERSION"/>
+  </property>
+  <property generated="never" lazy="false" name="isArchived" type="boolean">
+   <column name="ISARCHIVED"/>
+  </property>
+  <property generated="never" lazy="false" name="dateOfArchive" type="java.util.Date">
+   <column name="DATEOFARCHIVE"/>
+  </property>
+  <property column="DESCRIPTION" generated="never" lazy="false"
+   name="description" type="string"/>
+  <property column="BASEPRICE" generated="never" lazy="false"
+   name="basePrice" type="int"/>
+  <one-to-one cascade="save-update"
+   class="core.domain.realestate.estateaggregate.Estate" name="estate"/>
+  <many-to-one class="core.domain.kernel.User" name="owner" not-null="true">
+   <column name="OWNER"/>
+  </many-to-one>
+  <list cascade="save-update" inverse="true" lazy="true"
+   name="representers" table="REPRESENTERS">
+   <key column="SELLINGOFFER_ID"/>
+   <list-index base="0" column="POSITION"/>
+   <one-to-many class="core.domain.realestate.offeringaggregate.Representer"/>
+  </list>
+  <list cascade="save-update" inverse="true" lazy="true" name="offers" table="OFFERS">
+   <key column="SELLINGOFFER_ID"/>
+   <list-index base="0" column="POSITION"/>
+   <one-to-many class="core.domain.realestate.offeringaggregate.Offer"/>
+  </list>
+  <many-to-one
+   class="core.domain.realestate.agantaggregate.ExpertAgency"
+   name="approvalRequest" not-null="true">
+   <column name="APPROVALREQUEST"/>
+  </many-to-one>
+  <property generated="never" lazy="false" name="approvalStatus">
+   <column name="APPROVALSTATUS"/>
+   <type name="org.hibernate.type.EnumType">
+    <param name="useNamed">true</param>
+    <param name="enumClass">core.domain.realestate.offeringaggregate.ApprovalStatus</param>
+   </type>
+  </property>
+  <property generated="never" lazy="false" name="dateOfApprove" type="java.util.Date">
+   <column name="DATEOFAPPROVE"/>
+  </property>
+  <many-to-one
+   class="core.domain.realestate.agantaggregate.ExpertAgency"
+   name="offeredBy" not-null="true">
+   <column name="OFFEREDBY"/>
+  </many-to-one>
+  <many-to-one
+   class="core.domain.realestate.typeaggregate.SellingOfferType"
+   name="type" not-null="true">
+   <column name="TYPE"/>
+  </many-to-one>
+ </class>
 </hibernate-mapping>

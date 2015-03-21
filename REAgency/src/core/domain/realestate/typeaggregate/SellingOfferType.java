@@ -1,4 +1,4 @@
-package core.domain.realestate.offeringaggregate;
+package core.domain.realestate.typeaggregate;
 
 import core.domain.realestate.typeaggregate.REType;
 

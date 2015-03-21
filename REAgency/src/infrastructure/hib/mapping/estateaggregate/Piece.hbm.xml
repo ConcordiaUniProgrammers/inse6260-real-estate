@@ -18,7 +18,7 @@
             <column name="DATEOFARCHIVE" />
         </property>
         <property name="description" column="DESCRIPTION" type="string" />
-        <many-to-one name="type" class="core.domain.realestate.estateaggregate.PieceType" not-null="true">
+        <many-to-one name="type" class="core.domain.realestate.typeaggregate.PieceType" not-null="true">
             <column name="TYPE" />
         </many-to-one>
         <property name="quantity" type="int">

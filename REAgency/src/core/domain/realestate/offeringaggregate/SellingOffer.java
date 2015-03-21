@@ -9,6 +9,7 @@ import core.domain.kernel.IEntity;
 import core.domain.kernel.User;
 import core.domain.realestate.agantaggregate.ExpertAgency;
 import core.domain.realestate.estateaggregate.Estate;
+import core.domain.realestate.typeaggregate.SellingOfferType;
 
 public class SellingOffer implements IEntity, IArchivable {
 
