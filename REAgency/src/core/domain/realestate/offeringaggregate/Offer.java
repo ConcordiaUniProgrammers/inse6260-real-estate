@@ -2,10 +2,13 @@ package core.domain.realestate.offeringaggregate;
 
 import java.util.Date;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import core.domain.kernel.IArchivable;
 import core.domain.kernel.IEntity;
 import core.domain.kernel.User;
 
+@XmlRootElement
 public class Offer implements IEntity, IArchivable {
 
 	private int id;

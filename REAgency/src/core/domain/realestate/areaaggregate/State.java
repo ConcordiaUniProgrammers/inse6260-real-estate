@@ -3,9 +3,12 @@ package core.domain.realestate.areaaggregate;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import core.domain.kernel.IArchivable;
 import core.domain.kernel.IEntity;
 
+@XmlRootElement
 public class State implements IEntity {
 
 	private int id;

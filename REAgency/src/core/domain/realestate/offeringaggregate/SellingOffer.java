@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import core.domain.kernel.IArchivable;
 import core.domain.kernel.IEntity;
 import core.domain.kernel.User;
@@ -11,6 +13,7 @@ import core.domain.realestate.agantaggregate.ExpertAgency;
 import core.domain.realestate.estateaggregate.Estate;
 import core.domain.realestate.typeaggregate.SellingOfferType;
 
+@XmlRootElement
 public class SellingOffer implements IEntity, IArchivable {
 
 	private int id;

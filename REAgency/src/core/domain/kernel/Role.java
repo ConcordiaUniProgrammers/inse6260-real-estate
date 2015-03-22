@@ -3,6 +3,9 @@ package core.domain.kernel;
 import java.util.Date;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Role implements IEntity,IArchivable {
 
 	private int id;

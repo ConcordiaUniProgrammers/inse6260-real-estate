@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import core.domain.realestate.estateaggregate.Address;
 import core.domain.realestate.offeringaggregate.BookedTime;
 import core.domain.realestate.offeringaggregate.Offer;
 import core.domain.realestate.offeringaggregate.SellingOffer;
 
+@XmlRootElement
 public class User implements IEntity, IArchivable {
 
 	private int id;

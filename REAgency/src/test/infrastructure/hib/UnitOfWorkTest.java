@@ -31,6 +31,7 @@ import core.contract.infracontract.IStateRepository;
 import core.contract.infracontract.IUnitOfWork;
 import core.contract.infracontract.IUnitRepository;
 import core.contract.infracontract.IUserRepository;
+import core.domain.realestate.typeaggregate.EstateType;
 
 public class UnitOfWorkTest {
 	private AnnotationConfigApplicationContext context;
@@ -150,6 +151,9 @@ public class UnitOfWorkTest {
 	@Test
 	public void getrETypeRepositoryTest() {
 		IRETypeRepository repo = this.uow.getrETypeRepository();
+		EstateType t = new EstateType();
+		t.setName("dddd");
+		repo.save(t);
 		assertNotNull(repo);
 	}
 	

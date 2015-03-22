@@ -16,10 +16,11 @@ import core.domainservice.IRETypeService;
 public class RETypeService implements IRETypeService {
 
 	@Override
-	public void AddNewTypeToOneREType(String newTypeName, String type) {
+	public boolean AddNewTypeToOneREType(String newTypeName, String type) {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(
 				DIConfiguration.class);
 		IUnitOfWork uow = context.getBean(UnitOfWork.class);
+		boolean result = false;
 		try {
 			Class<?> myClass = Class
 					.forName("core.domain.realestate.typeaggregate." + type);
@@ -40,9 +41,14 @@ public class RETypeService implements IRETypeService {
 			
 			uow.getrETypeRepository().save(myType);
 			uow.commit();
+			result = true;
 		} catch (Exception e) {
 			System.err.println("RETypeService:AddNewTypeToOneApmaType --> "
 					+ e.getMessage());
+			
 		}
+		context.close();
+		return result;
+		
 	}
 }

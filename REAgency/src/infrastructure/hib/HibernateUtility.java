@@ -12,7 +12,7 @@ public class HibernateUtility {
 	private static ServiceRegistry serviceRegistry;
 	static{ 
 		    File f = new File("src/infrastructure/hib/hibernate.cfg.xml");
-			Configuration configuration =  new Configuration().configure(f);
+			Configuration configuration =  new Configuration().configure();
 			serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
 			sessionFactory = configuration.buildSessionFactory(serviceRegistry);
 	}

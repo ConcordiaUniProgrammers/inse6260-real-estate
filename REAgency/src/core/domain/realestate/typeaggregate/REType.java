@@ -2,9 +2,12 @@ package core.domain.realestate.typeaggregate;
 
 import java.util.Date;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import core.domain.kernel.IArchivable;
 import core.domain.kernel.IEntity;
 
+@XmlRootElement
 public class REType implements IEntity, IArchivable {
 
 	private int id;

@@ -1,7 +1,10 @@
 package core.domain.realestate.areaaggregate;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import core.domain.kernel.IEntity;
 
+@XmlRootElement
 public class District implements IEntity {
 
 	private int id;

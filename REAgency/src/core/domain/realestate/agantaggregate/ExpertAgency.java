@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import core.domain.kernel.IArchivable;
 import core.domain.kernel.IEntity;
 import core.domain.kernel.Role;
 import core.domain.realestate.estateaggregate.Address;
 import core.domain.realestate.estateaggregate.Estate;
 
+@XmlRootElement
 public class ExpertAgency implements IEntity, IArchivable {
 
 	private int id;

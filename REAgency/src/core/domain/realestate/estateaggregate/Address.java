@@ -1,6 +1,8 @@
 package core.domain.realestate.estateaggregate;
 
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement
 public class Address {
 	
 	private String street;

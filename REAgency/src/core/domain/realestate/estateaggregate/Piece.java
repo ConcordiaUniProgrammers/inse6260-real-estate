@@ -2,10 +2,13 @@ package core.domain.realestate.estateaggregate;
 
 import java.util.Date;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import core.domain.kernel.IArchivable;
 import core.domain.kernel.IEntity;
 import core.domain.realestate.typeaggregate.PieceType;
 
+@XmlRootElement
 public class Piece implements IEntity, IArchivable {
 
 	private int id;
