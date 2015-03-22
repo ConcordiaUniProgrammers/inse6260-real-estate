@@ -11,12 +11,20 @@
 		<property name="version" type="int">
 			<column name="VERSION" />
 		</property>
+		<property generated="never" lazy="false" name="isArchived"
+			type="boolean">
+			<column name="ISARCHIVED" />
+		</property>
+		<property generated="never" lazy="false" name="dateOfArchive"
+			type="java.util.Date">
+			<column name="DATEOFARCHIVE" />
+		</property>
 		<property name="name" type="java.lang.String">
 			<column name="NAME" />
 		</property>
 		<list name="states" inverse="true" table="STATES" cascade="save-update"
 			lazy="true">
-			<key column = "COUNTRY_ID" />
+			<key column="COUNTRY_ID" />
 			<list-index column="POSITION" />
 			<one-to-many class="core.domain.realestate.areaaggregate.State" />
 		</list>

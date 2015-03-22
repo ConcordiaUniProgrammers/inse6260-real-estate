@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.persistence.config.TunerType;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -11,9 +12,10 @@ import org.hibernate.criterion.Example;
 import org.hibernate.criterion.Projections;
 
 import core.contract.infracontract.IRepository;
+import core.domain.kernel.IArchivable;
 import core.domain.kernel.IEntity;
 
-public abstract class Repository<T extends IEntity> implements IRepository<T> {
+public abstract class Repository<T extends IEntity & IArchivable> implements IRepository<T> {
 
 	protected Session session;
 	protected Class<?> type;
@@ -22,32 +24,46 @@ public abstract class Repository<T extends IEntity> implements IRepository<T> {
 	}
 	
 	@Override
-	public void save(T entity) {
+	public boolean save(T entity) {
+		boolean isDone = false;
 		try {
 			this.session.save(entity);
+			isDone = true;
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+		return isDone;
 	}
 
 	@Override
-	public void delete(T entity) {
+	public boolean delete(int id) {
+		boolean isDone = false;
 		try {
-			this.session.delete(entity);
+			T entity = findById(id);
+			if(entity != null){
+				entity.setIsArchived(true);
+				save(entity);
+				isDone = true;
+			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+		return isDone;
 	}
 
 	@Override
-	public void update(T entity) {
+	public boolean update(T entity) {
+		boolean isDone = false;
 		try {
 			this.session.update(entity);
+			isDone = true;
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
+		return isDone;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public T findById(int id) {
 		T entity = null;
@@ -56,10 +72,10 @@ public abstract class Repository<T extends IEntity> implements IRepository<T> {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		
 		return entity;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<T> findAll() {
 		List<T> entities = new ArrayList<>();
@@ -72,6 +88,7 @@ public abstract class Repository<T extends IEntity> implements IRepository<T> {
 		return entities;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<T> findAllByPage(int firstResult, int maxResult) {
 		Criteria criteria = session.createCriteria(this.type);
@@ -91,6 +108,7 @@ public abstract class Repository<T extends IEntity> implements IRepository<T> {
 		return count;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<T> findByExample(T entity) {
 		List<T> result = new ArrayList<>();
@@ -104,6 +122,7 @@ public abstract class Repository<T extends IEntity> implements IRepository<T> {
 		return result;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<T> findByExampleByPage(T example, int firstResult, int maxResult) {
 		Example ex = Example.create(example);

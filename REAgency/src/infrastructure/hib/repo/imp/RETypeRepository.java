@@ -2,6 +2,8 @@ package infrastructure.hib.repo.imp;
 
 import infrastructure.hib.Repository;
 
+import java.util.Arrays;
+import java.util.IntSummaryStatistics;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -37,7 +39,7 @@ public class RETypeRepository extends Repository<REType> implements
 		List<REType> result = null;
 		try {
 			Query qu = session.createQuery("from " + typeName
-					+ " order by 'Rank'");
+					+ " order by rank");
 			result = qu.list();
 		} catch (Exception exp) {
 			System.err.println("RETypeRepository: getTypes --> "
@@ -51,7 +53,7 @@ public class RETypeRepository extends Repository<REType> implements
 		List<REType> result = null;
 		try {
 			Query qu = session.createQuery("from " + typeName
-					+ " where IsArchived=0  order by Rank");
+					+ " where isArchived=0  order by rank");
 			result = qu.list();
 		} catch (Exception exp) {
 			System.err.println("RETypeRepository: getTypes --> "
@@ -62,46 +64,37 @@ public class RETypeRepository extends Repository<REType> implements
 
 	@Override
 	public REType getLastType(String typeName) {
+		REType type = null;
 		try {
 			Query qu = session.createQuery("from " + typeName
-					+ " order by Rank Desc");
-			List typeList = qu.list();
-			if (typeList != null & typeList.size() > 0) {
-				for (int i = 0; i < typeList.size(); i++) {
-					REType type = (REType) typeList.get(i);
-					if (!type.getIsArchived()) {
-						return type;
-					}
-				}
+					+ " where isArchived=0 order by rank");
+			List<REType> typeList = qu.list();
+			if(typeList != null){
+				type = typeList.get(typeList.size() -1);
 			}
-			
 		} catch (Exception exp) {
 			System.err.println("RETypeRepository: getLastType --> "
 					+ exp.getMessage());
 		}
-		return null;
+		return type;
 	}
 
 	@Override
 	public REType getFirstType(String typeName) {
+		REType type = null;
 		try {
 			Query qu = session.createQuery("from " + typeName
-					+ " order by Rank");
-			List typeList = qu.list();
-
-			if (typeList != null & typeList.size() > 0) {
-				for (int i = 0; i < typeList.size(); i++) {
-					REType type = (REType) typeList.get(i);
-					if (!type.getIsArchived())
-						return type;
-				}
+					+ " where isArchived=0 order by rank");
+			List<REType> typeList = qu.list();
+			if(typeList != null){
+				type = typeList.get(0);
 			}
 			
 		} catch (Exception exp) {
 			System.err.println("RETypeRepository: getFirstType --> "
 					+ exp.getMessage());
 		}
-		return null;
+		return type;
 	}
 
 }

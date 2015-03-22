@@ -3,13 +3,14 @@ package core.contract.infracontract;
 import java.util.List;
 import java.util.Map;
 
+import core.domain.kernel.IArchivable;
 import core.domain.kernel.IEntity;
 
-public interface IRepository<T extends IEntity> {
+public interface IRepository<T extends IEntity & IArchivable> {
 	
-	public void save(T entity);
-	public void delete(T entity);
-	public void update(T entity);
+	public boolean save(T entity);
+	public boolean delete(int id);
+	public boolean update(T entity);
 	public T findById(int id);
 	public List<T> findAll();
 	public List<T> findAllByPage(int firstResult, int maxResult);

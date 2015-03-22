@@ -3,24 +3,34 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated Jan 31, 2015 1:37:08 AM by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="core.domain.realestate.areaaggregate.City" table="CITY">
-        <id name="id" type="int">
-            <column name="ID" />
-            <generator class="increment" />
-        </id>
-        <property name="version" type="int">
-            <column name="VERSION" />
-        </property>
-        <property name="name" type="java.lang.String">
-            <column name="NAME" />
-        </property>
-        <many-to-one name="state" class="core.domain.realestate.areaaggregate.State" not-null="true">
-            <column name="STATE" />
-        </many-to-one>
-        <list name="districts" inverse="true" table="DISTRICTS" cascade="save-update" lazy="true">
-            <key column="CITY_ID" />
-            <list-index column="POSITION" />
-            <one-to-many class="core.domain.realestate.areaaggregate.District" />
-        </list>
-    </class>
+	<class name="core.domain.realestate.areaaggregate.City" table="CITY">
+		<id name="id" type="int">
+			<column name="ID" />
+			<generator class="increment" />
+		</id>
+		<property name="version" type="int">
+			<column name="VERSION" />
+		</property>
+		<property generated="never" lazy="false" name="isArchived"
+			type="boolean">
+			<column name="ISARCHIVED" />
+		</property>
+		<property generated="never" lazy="false" name="dateOfArchive"
+			type="java.util.Date">
+			<column name="DATEOFARCHIVE" />
+		</property>
+		<property name="name" type="java.lang.String">
+			<column name="NAME" />
+		</property>
+		<many-to-one name="state"
+			class="core.domain.realestate.areaaggregate.State" not-null="true">
+			<column name="STATE" />
+		</many-to-one>
+		<list name="districts" inverse="true" table="DISTRICTS" cascade="save-update"
+			lazy="true">
+			<key column="CITY_ID" />
+			<list-index column="POSITION" />
+			<one-to-many class="core.domain.realestate.areaaggregate.District" />
+		</list>
+	</class>
 </hibernate-mapping>
