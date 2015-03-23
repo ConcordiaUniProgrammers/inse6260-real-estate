@@ -17,10 +17,28 @@
         <param-name>jersey.config.server.provider.packages</param-name>
         <param-value>infrastructure.restful</param-value>
     </init-param>
+    
     <load-on-startup>1</load-on-startup>
+ 
+    
   </servlet>
   <servlet-mapping>
     <servlet-name>Jersey REST Service</servlet-name>
     <url-pattern>/webapi/*</url-pattern>
   </servlet-mapping>
+  
+   <servlet>
+<servlet-name>infrastructure.restful.filemanager.MyApplication</servlet-name>
+<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+<init-param>
+<param-name>javax.ws.rs.Application</param-name>
+<param-value>infrastructure.restful.filemanager.MyApplication</param-value>
+</init-param>
+<load-on-startup>1</load-on-startup>
+</servlet>
+<servlet-mapping>
+<servlet-name>infrastructure.restful.filemanager.MyApplication</servlet-name>
+<url-pattern>/fileapi/*</url-pattern>
+</servlet-mapping>
+  
 </web-app> 
