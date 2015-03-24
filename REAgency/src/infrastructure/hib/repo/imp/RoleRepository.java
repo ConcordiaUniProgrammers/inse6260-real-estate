@@ -10,5 +10,4 @@ public class RoleRepository extends Repository<Role> implements IRoleRepository 
 		super(type);
 	}
 
-	
 }

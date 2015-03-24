@@ -10,5 +10,6 @@ public class NearbyFacilityRepository extends Repository<NearbyFacility>
 	public NearbyFacilityRepository(Class<?> type) {
 		super(type);
 	}
+	
 
 }

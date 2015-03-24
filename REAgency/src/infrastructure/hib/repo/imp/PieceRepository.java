@@ -10,5 +10,6 @@ public class PieceRepository extends Repository<Piece> implements
 	public PieceRepository(Class<?> type) {
 		super(type);
 	}
+	
 
 }

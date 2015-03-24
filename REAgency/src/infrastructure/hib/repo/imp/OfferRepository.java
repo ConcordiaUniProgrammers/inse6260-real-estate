@@ -10,5 +10,6 @@ public class OfferRepository extends Repository<Offer> implements
 	public OfferRepository(Class<?> type) {
 		super(type);
 	}
+	
 
 }

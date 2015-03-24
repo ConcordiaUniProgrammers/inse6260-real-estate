@@ -85,12 +85,6 @@ public class SellingOffer implements IEntity, IArchivable {
 	public void setOwner(User owner) {
 		this.owner = owner;
 	}
-	public List<Representer> getRepresenter() {
-		return representers;
-	}
-	public void setRepresenter(List<Representer> representer) {
-		this.representers = representer;
-	}
 	public List<Offer> getOffers() {
 		return offers;
 	}

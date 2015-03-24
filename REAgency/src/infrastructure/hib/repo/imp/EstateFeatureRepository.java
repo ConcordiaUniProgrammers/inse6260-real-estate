@@ -10,5 +10,5 @@ public class EstateFeatureRepository extends Repository<EstateFeature>
 	public EstateFeatureRepository(Class<?> type) {
 		super(type);
 	}
-
+	
 }
