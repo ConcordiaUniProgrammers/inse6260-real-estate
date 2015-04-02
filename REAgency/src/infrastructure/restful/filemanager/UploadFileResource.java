@@ -46,20 +46,20 @@ public class UploadFileResource {
 
 	}
 
-	@POST
-	@Path("/upload")
-	@Consumes(MediaType.MULTIPART_FORM_DATA)
-	public Response uploadFile(
-			@FormDataParam("file") InputStream uploadedInputStream,
-			@FormDataParam("file") FormDataContentDisposition fileDetail)
-			throws IOException {
-
-		String uploadedFileLocation = "d://uploaded/"
-				+ fileDetail.getFileName();
-		writeToFile(uploadedInputStream, uploadedFileLocation);
-		String output = "File uploaded to : " + uploadedFileLocation;
-		return Response.status(200).entity(output).build();
-	}
+//	@POST
+//	@Path("/upload")
+//	@Consumes(MediaType.MULTIPART_FORM_DATA)
+//	public Response uploadFile(
+//			@FormDataParam("file") InputStream uploadedInputStream,
+//			@FormDataParam("file") FormDataContentDisposition fileDetail)
+//			throws IOException {
+//
+//		String uploadedFileLocation = "d://uploaded/"
+//				+ fileDetail.getFileName();
+//		writeToFile(uploadedInputStream, uploadedFileLocation);
+//		String output = "File uploaded to : " + uploadedFileLocation;
+//		return Response.status(200).entity(output).build();
+//	}
 
 	// save uploaded file to new location
 	private void writeToFile(InputStream uploadedInputStream,
@@ -84,27 +84,27 @@ public class UploadFileResource {
 
 	}
 
-	@POST
-		@Path("/countries")
-		@Consumes(MediaType.MULTIPART_FORM_DATA)
-		public String uploadCountriesFile(
-				@FormDataParam("file") InputStream uploadedInputStream,
-				@FormDataParam("file") FormDataContentDisposition fileDetail) throws IOException {
-			
-			AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(
-				DIConfiguration.class);
-			BufferedReader reader = new BufferedReader(new InputStreamReader(uploadedInputStream));
-		    String line;
-		    while ((line = reader.readLine()) != null) {
-		    	
-				IUnitOfWork uow = context.getBean(UnitOfWork.class);
-		    	Country country = new Country();
-				country.setIsArchived(false);
-				country.setName(line);
-				uow.getCountryRepository().save(country);
-				uow.commit();
-		    }
-			context.close();
-			return (new Boolean(true).toString());
-		}
+//	@POST
+//		@Path("/countries")
+//		@Consumes(MediaType.MULTIPART_FORM_DATA)
+//		public String uploadCountriesFile(
+//				@FormDataParam("file") InputStream uploadedInputStream,
+//				@FormDataParam("file") FormDataContentDisposition fileDetail) throws IOException {
+//			
+//			AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(
+//				DIConfiguration.class);
+//			BufferedReader reader = new BufferedReader(new InputStreamReader(uploadedInputStream));
+//		    String line;
+//		    while ((line = reader.readLine()) != null) {
+//		    	
+//				IUnitOfWork uow = context.getBean(UnitOfWork.class);
+//		    	Country country = new Country();
+//				country.setIsArchived(false);
+//				country.setName(line);
+//				uow.getCountryRepository().save(country);
+//				uow.commit();
+//		    }
+//			context.close();
+//			return (new Boolean(true).toString());
+//		}
 }
