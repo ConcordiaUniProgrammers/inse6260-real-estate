@@ -4,19 +4,19 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class TypeViewModel {
+	private int id;
 	private String type;
-	private String newTypeName;
 	public String getType() {
 		return type;
 	}
 	public void setType(String type) {
 		this.type = type;
 	}
-	public String getNewTypeName() {
-		return newTypeName;
+	public int getId() {
+		return id;
 	}
-	public void setNewTypeName(String newTypeName) {
-		this.newTypeName = newTypeName;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }
