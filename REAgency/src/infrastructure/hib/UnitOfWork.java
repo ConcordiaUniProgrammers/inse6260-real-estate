@@ -73,6 +73,7 @@ public class UnitOfWork  implements IUnitOfWork {
 	@Override
 	public void rollback() {
 		this.transaction.rollback();
+		close();
 	}
 	
 	public Session getSession() {
